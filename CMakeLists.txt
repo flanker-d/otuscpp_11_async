@@ -34,7 +34,7 @@ install(TARGETS bulkmt async async_test
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib)
-install(FILES async.h DESTINATION include)
+install(FILES async.h handles_storage.h handle.h DESTINATION include/async_otus)
 
 set(CPACK_GENERATOR DEB)
 
