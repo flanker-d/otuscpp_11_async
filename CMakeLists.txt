@@ -30,12 +30,11 @@ set_target_properties(bulkmt async async_test PROPERTIES
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-
-
 install(TARGETS bulkmt async async_test
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib)
+install(FILES async.h DESTINATION include)
 
 set(CPACK_GENERATOR DEB)
 
