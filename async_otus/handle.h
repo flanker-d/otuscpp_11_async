@@ -1,4 +1,6 @@
-#include <interpreter.h>
+#include <memory>
+
+class interpreter;
 
 namespace async_lib
 {
