@@ -25,7 +25,7 @@ add_library(async SHARED
 target_link_libraries(async bulkmt)
 
 add_executable(async_test main.cpp)
-target_link_libraries(async_test async)
+target_link_libraries(async_test async pthread)
 
 set_target_properties(bulkmt async async_test PROPERTIES
         CXX_STANDARD 14

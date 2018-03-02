@@ -1,4 +1,5 @@
 #include <memory>
+#include <mutex>
 
 class interpreter;
 
@@ -16,5 +17,6 @@ namespace async_lib
       int m_id;
       std::string m_buffer;
       std::shared_ptr<interpreter> m_interpreter;
+      std::mutex m_mutex;
   };
 }

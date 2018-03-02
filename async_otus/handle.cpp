@@ -23,6 +23,7 @@ namespace async_lib
 
   void handle::process_data(const char *data, std::size_t size)
   {
+    std::unique_lock<std::mutex> lk(m_mutex);
     m_buffer += {data, size};
 
     while(true)

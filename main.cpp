@@ -1,4 +1,7 @@
 #include <async_otus/async.h>
+#include <string>
+#include <iostream>
+#include <thread>
 
 int main(int argc, char **argv)
 {
@@ -11,6 +14,29 @@ int main(int argc, char **argv)
   async::receive(h, "b\nc\nd\n}\n89\n", 11);
   async::disconnect(h);
   async::disconnect(h2);
+
+
+  auto h3 = async::connect(3);
+  auto t1 = std::thread([&]{
+    for(int i = 0; i < 10000; i += 2)
+    {
+      std::string cmd = "cmd" + std::to_string(i) + "\n";
+      async::receive(h3, cmd.c_str(), cmd.length());
+    }
+  });
+
+  auto t2 = std::thread([&]{
+    for(int i = 1; i <= 10000; i += 2)
+    {
+      std::string cmd = "cmd" + std::to_string(i) + "\n";
+      async::receive(h3, cmd.c_str(), cmd.length());
+    }
+  });
+
+  t1.join();
+  t2.join();
+
+  async::disconnect(h3);
 
   return 0;
 }
