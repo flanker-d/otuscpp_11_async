@@ -13,6 +13,7 @@ namespace async_lib
 
   handle::~handle()
   {
+    m_interpreter->forced_dump();
     m_interpreter->stop_observers();
   }
 
