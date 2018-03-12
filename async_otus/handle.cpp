@@ -40,4 +40,9 @@ namespace async_lib
         return;
     }
   }
+
+  void *handle::get_raw_ptr()
+  {
+    return static_cast<void*>(this);
+  }
 }

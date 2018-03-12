@@ -8,13 +8,13 @@ namespace async_lib
     return inst;
   }
 
-  std::shared_ptr<handle> handles_storage::create_handle(std::size_t bulk)
+  void* handles_storage::create_handle(std::size_t bulk)
   {
     std::unique_lock<std::mutex> lk(m_mutex);
     auto h = std::make_shared<handle>(m_id, bulk);
     m_handles.insert(std::make_pair(m_id, h));
     ++m_id;
-    return h;
+    return h->get_raw_ptr();
   }
 
   void handles_storage::destroy_handle(int id)

@@ -12,6 +12,7 @@ namespace async_lib
       ~handle();
       const int id() const;
       void process_data(const char *data, std::size_t size);
+      void *get_raw_ptr();
 
     private:
       int m_id;

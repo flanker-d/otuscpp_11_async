@@ -10,7 +10,7 @@ namespace async_lib
   {
     public:
       static handles_storage& instance();
-      std::shared_ptr<handle> create_handle(std::size_t bulk);
+      void* create_handle(std::size_t bulk);
       void destroy_handle(int id);
 
     private:

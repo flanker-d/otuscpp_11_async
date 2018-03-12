@@ -1,4 +1,5 @@
 #include <async_otus/async.h>
+#include <async_otus/handles_storage.h>
 
 namespace async
 {
@@ -9,11 +10,11 @@ namespace async
 
   void receive(handle_t handle, const char *data, std::size_t size)
   {
-    handle->process_data(data, size);
+    static_cast<async_lib::handle*>(handle)->process_data(data, size);
   }
 
   void disconnect(handle_t handle)
   {
-    async_lib::handles_storage::instance().destroy_handle(handle->id());
+    async_lib::handles_storage::instance().destroy_handle(static_cast<async_lib::handle*>(handle)->id());
   }
 }
